@@ -32,15 +32,16 @@
             <div class="nav-links">
                 <a href="#home" class="nav-link active">🏠 Home</a>
                 <a href="#explore" class="nav-link">🔍 Explore</a>
+
                 <a href="#anatomy" class="nav-link">📚 Anatomy</a>
                 <a href="#quiz" class="nav-link">🎯 Quizzes</a>
-                <a href="#facts" class="nav-link">💡 Facts</a>
+             a href="#facts" class="nav-link">💡 Facts</a>
                 <a href="#about" class="nav-link">ℹ️ About</a>
             </div>
             
             <div class="mobile-menu-toggle" id="mobileMenuToggle">
                 <span></span>
-                <span></span>
+                <span></span> 
                 <span></span>
             </div>
             
@@ -203,7 +204,7 @@
         <!-- Explore Section -->
         <section id="explore" class="section">
             <div class="section-header">
-                <h2 class="section-title"><span class="section-emoji">🔍</span>Explore Human Body</h2>
+                <h2 class="section-title">🔍 Explore Human Body</h2>
                 <p class="section-subtitle">Discover the amazing organs and systems that make up your body</p>
             </div>
             
@@ -275,14 +276,6 @@
                         
                         <!-- Lower Section -->
                         <div class="body-section lower-section">
-                            <div class="organ" data-organ="hands" data-system="skeletal">
-                                <span class="organ-emoji">🤲</span>
-                                <div class="organ-tooltip">Hands</div>
-                            </div>
-                            <div class="organ" data-organ="spine" data-system="skeletal">
-                                <span class="organ-emoji">🧿</span>
-                                <div class="organ-tooltip">Spine</div>
-                            </div>
                             <div class="organ" data-organ="legs" data-system="skeletal">
                                 <span class="organ-emoji">🦵🏻</span>
                                 <div class="organ-tooltip">Legs</div>
@@ -302,10 +295,12 @@
             </div>
         </section>
 
+
+
         <!-- Anatomy Library Section -->
         <section id="anatomy" class="section">
             <div class="section-header">
-                <h2 class="section-title"><span class="section-emoji">📚</span>Anatomy Library</h2>
+                <h2 class="section-title">📚 Anatomy Library</h2>
                 <p class="section-subtitle">Comprehensive information about all body parts and systems</p>
             </div>
             
@@ -462,7 +457,7 @@
         <!-- Facts Section -->
         <section id="facts" class="section">
             <div class="section-header">
-                <h2 class="section-title"><span class="section-emoji">💡</span>Amazing Body Facts</h2>
+                <h2 class="section-title">💡 Amazing Body Facts</h2>
                 <p class="section-subtitle">Discover incredible facts about the human body that will amaze you</p>
             </div>
             
@@ -477,7 +472,7 @@
         <section id="about" class="section">
             <div class="about-container">
                 <div class="section-header">
-                    <h2 class="section-title"><span class="section-emoji">ℹ️</span>About Human Body Explorer</h2>
+                    <h2 class="section-title">ℹ️ About Human Body Explorer</h2>
                 </div>
                 
                 <div class="about-content">
@@ -525,7 +520,7 @@
         </section>
     </div>
 
-    <!-- Organ Modal with Tabs -->
+    <!-- Enhanced Modal for Organ Information -->
     <div class="modal hidden" id="organModal">
         <div class="modal-backdrop"></div>
         <div class="modal-content">
@@ -533,27 +528,41 @@
             
             <div class="modal-header">
                 <div class="organ-icon" id="modalOrganIcon">🫀</div>
-                <h2 id="modalOrganName">Heart</h2>
-                <p>Learn about this amazing organ</p>
+                <div>
+                    <h2 id="modalOrganName">Heart</h2>
+                    <p>Learn about this amazing organ</p>
+                </div>
             </div>
             
-            <div class="modal-tabs">
-                <button class="tab-btn active" data-tab="overview">📖 Overview</button>
-                <button class="tab-btn" data-tab="facts">✨ Facts</button>
+            <div class="organ-image-container">
+                <img id="modalOrganImage" class="organ-image" src="" alt="Organ Image" onerror="this.style.display='none'">
+            </div>
+            
+            <div class="organ-tabs">
+                <button class="tab-btn active" data-tab="overview">📋 Overview</button>
+                <button class="tab-btn" data-tab="health">❤️ Health</button>
                 <button class="tab-btn" data-tab="nutrition">🥗 Nutrition</button>
-                <button class="tab-btn" data-tab="health">💚 Health</button>
+                <button class="tab-btn" data-tab="diseases">⚠️ Diseases</button>
             </div>
             
             <div class="tab-content">
-                <div class="tab-panel active" id="overview-panel">
+                <!-- Overview Tab -->
+                <div class="tab-panel active" id="overviewTab">
                     <div class="organ-brief">
-                        <h4>📝 Brief Explanation</h4>
-                        <p id="modalOrganBrief">Brief explanation will appear here</p>
+                        <h4>📝 Brief Description</h4>
+                        <p id="modalOrganBrief">Brief description will appear here</p>
                     </div>
                     
                     <div class="organ-detailed">
                         <h4>📖 Detailed Information</h4>
                         <p id="modalOrganDescription">Detailed description will appear here</p>
+                    </div>
+                    
+                    <div class="organ-facts">
+                        <h4>✨ Amazing Facts</h4>
+                        <ul id="organFactsList">
+                            <!-- Facts will be populated by JavaScript -->
+                        </ul>
                     </div>
                     
                     <div class="organ-functions">
@@ -564,44 +573,644 @@
                     </div>
                 </div>
                 
-                <div class="tab-panel" id="facts-panel">
-                    <div class="organ-facts">
-                        <h4>✨ Amazing Facts</h4>
-                        <ul id="organFactsList">
-                            <!-- Facts will be populated by JavaScript -->
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="tab-panel" id="nutrition-panel">
-                    <div class="organ-nutrition">
-                        <h4>🥗 Nutrition & Diet</h4>
-                        <ul id="organNutritionList">
-                            <!-- Nutrition info will be populated by JavaScript -->
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="tab-panel" id="health-panel">
-                    <div class="organ-disorders">
-                        <h4>⚠️ Common Issues</h4>
-                        <ul id="organDisordersList">
-                            <!-- Disorders will be populated by JavaScript -->
+                <!-- Health Tab -->
+                <div class="tab-panel" id="healthTab">
+                    <div class="organ-effects">
+                        <h4>⚡ Effects on Body</h4>
+                        <ul id="organEffectsList">
+                            <!-- Effects will be populated by JavaScript -->
                         </ul>
                     </div>
                     
-                    <div class="organ-care">
-                        <h4>💚 Health Tips</h4>
-                        <ul id="organCareList">
-                            <!-- Care tips will be populated by JavaScript -->
+                    <div class="organ-protection">
+                        <h4>🛡️ Protection Tips</h4>
+                        <ul id="organProtectionList">
+                            <!-- Protection tips will be populated by JavaScript -->
                         </ul>
                     </div>
                 </div>
+                
+                <!-- Nutrition Tab -->
+                <div class="tab-panel" id="nutritionTab">
+                    <div class="organ-nutrition">
+                        <h4>🥗 Good Foods</h4>
+                        <ul id="organGoodFoodsList">
+                            <!-- Good foods will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <div class="organ-nutrition">
+                        <h4>🚫 Foods to Avoid</h4>
+                        <ul id="organBadFoodsList">
+                            <!-- Bad foods will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Diseases Tab -->
+                <div class="tab-panel" id="diseasesTab">
+                    <div class="organ-diseases">
+                        <h4>⚠️ Common Diseases</h4>
+                        <ul id="organDiseasesList">
+                            <!-- Diseases will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <div class="organ-protection">
+                        <h4>🛡️ Prevention Tips</h4>
+                        <ul id="organPreventionList">
+                            <!-- Prevention tips will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="learn-more-btn">📚 Learn More</button>
+                <button class="quiz-btn">🎯 Take Quiz</button>
             </div>
         </div>
     </div>
 
     <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>             </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explore Section -->
+        <section id="explore" class="section">
+            <div class="section-header">
+                <h2 class="section-title">🔍 Explore the Human Body</h2>
+                <p class="section-subtitle">Click on body parts to learn more about them</p>
+            </div>
+            
+            <div class="explore-container">
+                <div class="system-selector">
+                    <h3>Body Systems & Parts</h3>
+                    <div class="system-btn active" data-system="all">🧬 All Parts</div>
+                    <div class="system-btn" data-system="nervous">🧠 Nervous System</div>
+                    <div class="system-btn" data-system="circulatory">🫀 Circulatory System</div>
+                    <div class="system-btn" data-system="respiratory">🫁 Respiratory System</div>
+                    <div class="system-btn" data-system="digestive">🍽️ Digestive System</div>
+                    <div class="system-btn" data-system="sensory">👁️ Sensory Organs</div>
+                    <div class="system-btn" data-system="skeletal">🦴 Skeletal System</div>
+                    <div class="system-btn" data-system="muscular">🦵🏻 Muscular System</div>
+                </div>
+                
+                <div class="body-viewer">
+                    <div class="human-body">
+                        <!-- Head Area -->
+                        <div class="body-section head-section">
+                            <div class="organ brain" data-organ="brain" data-system="nervous">
+                                <span class="organ-emoji">🧠</span>
+                                <div class="organ-tooltip">Brain</div>
+                            </div>
+                            <div class="organ eyes" data-organ="eyes" data-system="sensory">
+                                <span class="organ-emoji">👁️</span>
+                                <div class="organ-tooltip">Eyes</div>
+                            </div>
+                            <div class="organ mouth" data-organ="mouth" data-system="sensory">
+                                <span class="organ-emoji">👄</span>
+                                <div class="organ-tooltip">Mouth</div>
+                            </div>
+                            <div class="organ teeth" data-organ="teeth" data-system="digestive">
+                                <span class="organ-emoji">🦷</span>
+                                <div class="organ-tooltip">Teeth</div>
+                            </div>
+                            <div class="organ tongue" data-organ="tongue" data-system="sensory">
+                                <span class="organ-emoji">👅</span>
+                                <div class="organ-tooltip">Tongue</div>
+                            </div>
+                            <div class="organ ears" data-organ="ears" data-system="sensory">
+                                <span class="organ-emoji">👂🏻</span>
+                                <div class="organ-tooltip">Ears</div>
+                            </div>
+                        </div>
+
+                        <!-- Torso Area -->
+                        <div class="body-section torso-section">
+                            <div class="organ heart" data-organ="heart" data-system="circulatory">
+                                <span class="organ-emoji">🫀</span>
+                                <div class="organ-tooltip">Heart</div>
+                            </div>
+                            <div class="organ lungs" data-organ="lungs" data-system="respiratory">
+                                <span class="organ-emoji">🫁</span>
+                                <div class="organ-tooltip">Lungs</div>
+                            </div>
+                            <div class="organ stomach" data-organ="stomach" data-system="digestive">
+                                <span class="organ-emoji">🫃</span>
+                                <div class="organ-tooltip">Stomach</div>
+                            </div>
+                            <div class="organ liver" data-organ="liver" data-system="digestive">
+                                <span class="organ-emoji">🟤</span>
+                                <div class="organ-tooltip">Liver</div>
+                            </div>
+                            <div class="organ kidneys" data-organ="kidneys" data-system="circulatory">
+                                <span class="organ-emoji">🫘</span>
+                                <div class="organ-tooltip">Kidneys</div>
+                            </div>
+                        </div>
+
+                        <!-- Lower Body Area -->
+                        <div class="body-section lower-section">
+                            <div class="organ legs" data-organ="legs" data-system="muscular">
+                                <span class="organ-emoji">🦵🏻</span>
+                                <div class="organ-tooltip">Legs</div>
+                            </div>
+                            <div class="organ bones" data-organ="bones" data-system="skeletal">
+                                <span class="organ-emoji">🦴</span>
+                                <div class="organ-tooltip">Bones</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="interaction-hint">
+                        <div class="hint-icon">👆</div>
+                        <p>Click on any body part to explore!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Enhanced Modal -->
+            <div class="modal hidden" id="organModal">
+                <div class="modal-backdrop"></div>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="organ-icon" id="modalOrganIcon">🧠</div>
+                        <h3 id="modalOrganName">Brain</h3>
+                        <button class="close-btn" id="closeModal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="organ-image-container">
+                            <img id="modalOrganImage" src="" alt="Organ Image" class="organ-image">
+                        </div>
+                        <div class="organ-tabs">
+                            <button class="tab-btn active" data-tab="overview">Overview</button>
+                            <button class="tab-btn" data-tab="effects">Effects</button>
+                            <button class="tab-btn" data-tab="protection">Protection</button>
+                            <button class="tab-btn" data-tab="nutrition">Nutrition</button>
+                            <button class="tab-btn" data-tab="diseases">Diseases</button>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-panel active" id="overviewTab">
+                        <div class="organ-brief">
+                            <h4>Brief Overview:</h4>
+                            <p id="modalOrganBrief">Brief description here...</p>
+                        </div>
+                        <div class="organ-detailed">
+                            <h4>Detailed Explanation:</h4>
+                            <p id="modalOrganDescription">Detailed description here...</p>
+                        </div>
+                        <div class="organ-facts">
+                            <h4>Quick Facts:</h4>
+                            <ul id="organFactsList">
+                                <li>Amazing fact 1</li>
+                                <li>Amazing fact 2</li>
+                                <li>Amazing fact 3</li>
+                            </ul>
+                        </div>
+                        <div class="organ-functions">
+                            <h4>Main Functions:</h4>
+                            <ul id="organFunctionsList">
+                                <li>Function 1</li>
+                                <li>Function 2</li>
+                                <li>Function 3</li>
+                            </ul>
+                        </div>
+                            </div>
+                            <div class="tab-panel" id="effectsTab">
+                                <div class="organ-effects">
+                                    <h4>Effects on Body:</h4>
+                                    <ul id="organEffectsList">
+                                        <li>Effect 1</li>
+                                        <li>Effect 2</li>
+                                        <li>Effect 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-panel" id="protectionTab">
+                                <div class="organ-protection">
+                                    <h4>How to Protect:</h4>
+                                    <ul id="organProtectionList">
+                                        <li>Protection tip 1</li>
+                                        <li>Protection tip 2</li>
+                                        <li>Protection tip 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-panel" id="nutritionTab">
+                                <div class="organ-nutrition">
+                                    <h4>Good Foods:</h4>
+                                    <ul id="organGoodFoodsList">
+                                        <li>Good food 1</li>
+                                        <li>Good food 2</li>
+                                    <li>Good food 3</li>
+                                    </ul>
+                                    <h4>Foods to Avoid:</h4>
+                                    <ul id="organBadFoodsList">
+                                        <li>Bad food 1</li>
+                                        <li>Bad food 2</li>
+                                        <li>Bad food 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="tab-panel" id="diseasesTab">
+                                <div class="organ-diseases">
+                                    <h4>Common Diseases:</h4>
+                                    <ul id="organDiseasesList">
+                                        <li>Disease 1</li>
+                                        <li>Disease 2</li>
+                                        <li>Disease 3</li>
+                                    </ul>
+                                    <h4>Prevention:</h4>
+                                    <ul id="organPreventionList">
+                                        <li>Prevention tip 1</li>
+                                        <li>Prevention tip 2</li>
+                                        <li>Prevention tip 3</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="learn-more-btn" id="learnMoreBtn">📚 Learn More</button>
+                        <button class="quiz-btn" id="organQuizBtn">🎯 Take Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D Human Body Section -->
+        <section id="body3d" class="section">
+            <div class="section-header">
+                <h2 class="section-title">🧬 3D Human Body Explorer</h2>
+                <p class="section-subtitle">Explore the human body in 3D - hover over parts to see their names</p>
+            </div>
+            
+            <div class="body3d-container">
+                <div class="body3d-controls">
+                    <h3>View Controls</h3>
+                    <div class="control-buttons">
+                        <button class="control-btn active" data-view="front">👤 Front View</button>
+                        <button class="control-btn" data-view="back">🔄 Back View</button>
+                        <button class="control-btn" data-view="side">↔️ Side View</button>
+                    </div>
+                    <div class="system-filter">
+                        <h4>Filter Systems:</h4>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="nervous">🧠 Nervous</button>
+                            <button class="filter-btn" data-filter="circulatory">🫀 Circulatory</button>
+                            <button class="filter-btn" data-filter="respiratory">🫁 Respiratory</button>
+                            <button class="filter-btn" data-filter="digestive">🍽️ Digestive</button>
+                            <button class="filter-btn" data-filter="skeletal">🦴 Skeletal</button>
+                            <button class="filter-btn" data-filter="muscular">💪 Muscular</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="body3d-viewer">
+                    <div class="body3d-canvas" id="body3dCanvas">
+                        <!-- 3D Animated Human Body Model -->
+                        <div class="human-model-3d" id="humanModel3D" data-view="front">
+                            <!-- 3D Body Structure -->
+                            <div class="body-3d-structure">
+                                <!-- Head -->
+                                <div class="body-region head-region">
+                                    <div class="body-part-3d brain-part" data-part="brain" data-system="nervous">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Brain</div>
+                                    </div>
+                                    <div class="body-part-3d eyes-part" data-part="eyes" data-system="sensory">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Eyes</div>
+                                    </div>
+                                    <div class="body-part-3d ears-part" data-part="ears" data-system="sensory">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Ears</div>
+                                    </div>
+                                    <div class="body-part-3d mouth-part" data-part="mouth" data-system="digestive">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Mouth</div>
+                                    </div>
+                                    <div class="body-part-3d teeth-part" data-part="teeth" data-system="digestive">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Teeth</div>
+                                    </div>
+                                    <div class="body-part-3d tongue-part" data-part="tongue" data-system="sensory">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Tongue</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Torso -->
+                                <div class="body-region torso-region">
+                                    <div class="body-part-3d heart-part" data-part="heart" data-system="circulatory">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Heart</div>
+                                    </div>
+                                    <div class="body-part-3d lungs-part" data-part="lungs" data-system="respiratory">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Lungs</div>
+                                    </div>
+                                    <div class="body-part-3d liver-part" data-part="liver" data-system="digestive">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Liver</div>
+                                    </div>
+                                    <div class="body-part-3d stomach-part" data-part="stomach" data-system="digestive">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Stomach</div>
+                                    </div>
+                                    <div class="body-part-3d kidneys-part" data-part="kidneys" data-system="circulatory">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Kidneys</div>
+                                    </div>
+                                    <div class="body-part-3d ribs-part" data-part="ribs" data-system="skeletal">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Ribs</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Limbs -->
+                                <div class="body-region limbs-region">
+                                    <div class="body-part-3d arms-part" data-part="arms" data-system="muscular">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Arms</div>
+                                    </div>
+                                    <div class="body-part-3d hands-part" data-part="hands" data-system="skeletal">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Hands</div>
+                                    </div>
+                                    <div class="body-part-3d legs-part" data-part="legs" data-system="muscular">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Legs</div>
+                                    </div>
+                                    <div class="body-part-3d feet-part" data-part="feet" data-system="skeletal">
+                                        <div class="part-highlight"></div>
+                                        <div class="part-name">Feet</div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Spine (Back View) -->
+                                <div class="body-part-3d spine-part back-view-only" data-part="spine" data-system="skeletal">
+                                    <div class="part-highlight"></div>
+                                    <div class="part-name">Spine</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 3D Body Silhouette -->
+                        <div class="body-silhouette" id="bodySilhouette">
+                            <svg viewBox="0 0 200 400" class="body-svg">
+                                <!-- Head -->
+                                <ellipse cx="100" cy="40" rx="25" ry="30" class="body-outline head-outline"/>
+                                <!-- Neck -->
+                                <rect x="90" y="65" width="20" height="15" class="body-outline neck-outline"/>
+                                <!-- Torso -->
+                                <ellipse cx="100" cy="140" rx="45" ry="60" class="body-outline torso-outline"/>
+                                <!-- Arms -->
+                                <ellipse cx="60" cy="120" rx="12" ry="40" class="body-outline arm-outline"/>
+                                <ellipse cx="140" cy="120" rx="12" ry="40" class="body-outline arm-outline"/>
+                                <!-- Legs -->
+                                <ellipse cx="85" cy="280" rx="15" ry="80" class="body-outline leg-outline"/>
+                                <ellipse cx="115" cy="280" rx="15" ry="80" class="body-outline leg-outline"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="body3d-info">
+                        <div class="current-part-info" id="currentPartInfo">
+                            <h3>Hover over body parts to explore!</h3>
+                            <p>Move your cursor over different parts of the 3D body model to learn about them.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anatomy Library Section -->
+        <section id="anatomy" class="section">
+            <div class="section-header">
+                <h2 class="section-title">📚 Anatomy Library</h2>
+                <p class="section-subtitle">Comprehensive information about all body parts</p>
+            </div> 
+            
+            <div class="anatomy-library">
+                <div class="anatomy-categories">
+                    <div class="category-btn active" data-category="all">All Parts</div>
+                    <div class="category-btn" data-category="head">Head & Neck</div>
+                    <div class="category-btn" data-category="chest">Chest</div>
+                    <div class="category-btn" data-category="abdomen">Abdomen</div>
+                    <div class="category-btn" data-category="limbs">Limbs</div>
+                </div>
+                
+                <div class="anatomy-grid" id="anatomyGrid">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="quiz-container">
+                <div class="quiz-selection" id="quizSelection">
+                    <div class="section-header">
+                        <h2 class="section-title">🎮 Test Your Knowledge!</h2>
+                        <p class="section-subtitle">Choose a quiz category to get started</p>
+                    </div>
+                    <div class="quiz-categories">
+                        <div class="quiz-card" data-category="nervous">
+                            <div class="quiz-card-header">
+                                <div class="quiz-icon">🧠</div>
+                                <div class="quiz-difficulty easy">Easy</div>
+                            </div>
+                            <h3>Nervous System</h3>
+                            <p>Test your brain knowledge</p>
+                            <div class="quiz-stats">
+                                <span>⏱️ 5 min</span>
+                                <span>❓ 5 questions</span>
+                            </div>
+                        </div>
+                        <div class="quiz-card" data-category="circulatory">
+                            <div class="quiz-card-header">
+                                <div class="quiz-icon">🫀</div>
+                                <div class="quiz-difficulty medium">Medium</div>
+                            </div>
+                            <h3>Circulatory System</h3>
+                            <p>Heart and blood vessels</p>
+                            <div class="quiz-stats">
+                                <span>⏱️ 5 min</span>
+                                <span>❓ 5 questions</span>
+                            </div>
+                        </div>
+                        <div class="quiz-card" data-category="sensory">
+                            <div class="quiz-card-header">
+                                <div class="quiz-icon">👁️</div>
+                                <div class="quiz-difficulty medium">Medium</div>
+                            </div>
+                            <h3>Sensory Organs</h3>
+                            <p>Eyes, ears, and senses</p>
+                            <div class="quiz-stats">
+                                <span>⏱️ 5 min</span>
+                                <span>❓ 5 questions</span>
+                            </div>
+                        </div>
+                        <div class="quiz-card" data-category="respiratory">
+                            <div class="quiz-card-header">
+                                <div class="quiz-icon">🫁</div>
+                                <div class="quiz-difficulty medium">Medium</div>
+                            </div>
+                            <h3>Respiratory System</h3>
+                            <p>Breathing and lungs</p>
+                            <div class="quiz-stats">
+                                <span>⏱️ 5 min</span>
+                                <span>❓ 5 questions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-game hidden" id="quizGame">
+                    <div class="quiz-header">
+                        <div class="quiz-info">
+                            <h3 id="quizTitle">Quiz Title</h3>
+                            <div class="quiz-meta">
+                                <span class="question-counter" id="questionCounter">1/5</span>
+                                <span class="quiz-timer" id="quizTimer">30s</span>
+                            </div>
+                        </div>
+                        <div class="quiz-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="quizProgressBar"></div>
+                            </div>
+                        </div>
+                        <div class="quiz-score">
+                            <span class="score-label">Score:</span>
+                            <span class="score-value" id="currentScore">0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="question-container">
+                        <div class="question-card">
+                            <h3 class="question-text" id="questionText">Question will appear here</h3>
+                            <div class="answers-grid" id="answersGrid"></div>
+                        </div>
+                        <div class="quiz-actions">
+                            <button class="quiz-btn secondary" id="skipButton">Skip Question</button>
+                            <button class="quiz-btn primary hidden" id="nextButton">Next Question</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-results hidden" id="quizResults">
+                    <div class="results-content">
+                        <div class="results-header">
+                            <div class="results-icon" id="resultsIcon">🏆</div>
+                            <h2 class="results-title" id="resultsTitle">Excellent Work!</h2>
+                            <p class="results-subtitle" id="resultsSubtitle">You've completed the quiz!</p>
+                        </div>
+                        
+                        <div class="score-display">
+                            <div class="score-circle">
+                                <div class="score-inner">
+                                    <span class="score-number" id="scorePercentage">0%</span>
+                                    <span class="score-fraction">
+                                        <span id="finalScore">0</span>/<span id="totalQuestions">5</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">✅</div>
+                                <div class="stat-value" id="correctAnswers">0</div>
+                                <div class="stat-label">Correct</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">❌</div>
+                                <div class="stat-value" id="incorrectAnswers">0</div>
+                                <div class="stat-label">Incorrect</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">⏱️</div>
+                                <div class="stat-value" id="timeSpent">0s</div>
+                                <div class="stat-label">Time</div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-actions">
+                            <button class="quiz-btn primary" id="restartQuiz">🔄 Try Again</button>
+                            <button class="quiz-btn secondary" id="backToQuizzes">← Back to Quizzes</button>
+                            <button class="quiz-btn secondary" id="shareResults">📤 Share Results</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facts Section -->
+        <section id="facts" class="section">
+            <div class="facts-container">
+                <div class="section-header">
+                    <h2 class="section-title">💡 Amazing Body Facts!</h2>
+                    <p class="section-subtitle">Click on facts to learn and earn points</p>
+                </div>
+                <div class="facts-grid" id="factsGrid"></div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="about-container">
+                <div class="section-header">
+                    <h2 class="section-title">ℹ️ About Human Body Explorer</h2>
+                </div>
+                <div class="about-content">
+                    <p>Learn about the amazing human body through interactive exploration, fun quizzes, and fascinating facts!</p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🔍</div>
+                            <h4>Interactive Exploration</h4>
+                            <p>Click and explore different body systems</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🧬</div>
+                            <h4>3D Body Model</h4>
+                            <p>Explore the human body in 3D</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📚</div>
+                            <h4>Anatomy Library</h4>
+                            <p>Comprehensive information with images</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h4>Educational Quizzes</h4>
+                            <p>Test your knowledge with fun quizzes</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">💡</div>
+                            <h4>Amazing Facts</h4>
+                            <p>Discover incredible facts about your body</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <h4>Progress Tracking</h4>
+                            <p>Track your learning journey</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Toast Notifications -->
     <div class="toast-container" id="toastContainer"></div>
 
     <script src="script.js"></script>
