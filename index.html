@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧬 Human Body Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="dna-animation">🧬</div>
+            <h2>Loading Human Body Explorer...</h2>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loadingProgress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar hidden" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-icon">🧬</span>
+                <span class="logo-text">Human Body Explorer</span>
+            </div>
+            
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">🏠 Home</a>
+                <a href="#explore" class="nav-link">🔍 Explore</a>
+                <a href="#anatomy" class="nav-link">📚 Anatomy</a>
+                <a href="#quiz" class="nav-link">🎯 Quizzes</a>
+                <a href="#facts" class="nav-link">💡 Facts</a>
+                <a href="#about" class="nav-link">ℹ️ About</a>
+            </div>
+            
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="nav-profile">
+                <div class="profile-icon" id="profileIcon">👤</div>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <div class="dropdown-header">
+                        <div class="user-avatar">👤</div>
+                        <div class="user-info">
+                            <div class="username" id="dropdownUsername">User</div>
+                            <div class="user-level">Explorer</div>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item" id="myProfile">👤 My Profile</div>
+                    <div class="dropdown-item" id="settings">⚙️ Settings</div>
+                    <div class="dropdown-item" id="achievements">🏆 Achievements</div>
+                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-item logout-item" id="logout">🚪 Logout</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Container -->
+    <div class="auth-container" id="authContainer">
+        <div class="auth-background">
+            <div class="floating-particles">
+                <div class="particle">🧬</div>
+                <div class="particle">🫀</div>
+                <div class="particle">🧠</div>
+                <div class="particle">🫁</div>
+                <div class="particle">💀</div>
+            </div>
+        </div>
+        <div class="auth-wrapper">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="auth-logo">🧠</div>
+                    <h1 class="auth-title">Human Body Explorer</h1>
+                    <p class="auth-subtitle">Discover and learn about the human body in an interactive way</p>
+                </div>
+                
+                <div class="form-container" id="signupContainer">
+                    <h2>Create Account</h2>
+                    <form id="signupForm">
+                        <div class="input-group">
+                            <label for="signupUsername">Username</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="signupUsername" placeholder="Enter username" required>
+                                <div class="input-validation" id="usernameValidation"></div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="signupPassword">Password</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" id="signupPassword" placeholder="Enter password" required>
+                                <button type="button" class="password-toggle" id="signupPasswordToggle">👁️</button>
+                                <div class="input-validation" id="passwordValidation"></div>
+                            </div>
+                            <div class="password-strength" id="passwordStrength">
+                                <div class="strength-bar">
+                                    <div class="strength-fill"></div>
+                                </div>
+                                <span class="strength-text">Password strength</span>
+                            </div>
+                        </div>
+                        <button type="submit" class="auth-btn">Sign Up</button>
+                        <p class="switch-text">Already have an account? <span id="toLogin">Login</span></p>
+                    </form>
+                </div>
+
+                <div class="form-container hidden" id="loginContainer">
+                    <h2>Welcome Back</h2>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label for="loginUsername">Username</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">👤</span>
+                                <input type="text" id="loginUsername" placeholder="Enter username" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="loginPassword">Password</label>
+                            <div class="input-wrapper">
+                                <span class="input-icon">🔒</span>
+                                <input type="password" id="loginPassword" placeholder="Enter password" required>
+                                <button type="button" class="password-toggle" id="loginPasswordToggle">👁️</button>
+                            </div>
+                        </div>
+                        <button type="submit" class="auth-btn">Login</button>
+                        <p class="switch-text">Don't have an account? <span id="toSignup">Sign Up</span></p>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="auth-image">
+                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=500&h=600&fit=crop" alt="Human Body Anatomy" class="body-image">
+                <div class="image-overlay">
+                    <h3>🧬 Explore the Human Body</h3>
+                    <p>Learn about organs, systems, and amazing body facts!</p>
+                    <div class="feature-highlights">
+                        <div class="highlight">🫀 Interactive Organs</div>
+                        <div class="highlight">🧠 Educational Content</div>
+                        <div class="highlight">🎯 Fun Quizzes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div class="app-container hidden" id="appContainer">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="title-line">Welcome to</span>
+                        <span class="title-highlight">Human Body Explorer!</span>
+                        <span class="title-emoji">🧬</span>
+                    </h1>
+                    <p class="hero-description">Embark on an amazing journey through the human body and discover the wonders within</p>
+                    <div class="hero-actions">
+                        <button class="cta-button primary" data-section="explore">🔍 Start Exploring</button>
+                        <button class="cta-button secondary" data-section="anatomy">📚 View Library</button>
+                    </div>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-number" id="userProgress">0%</div>
+                        <div class="stat-label">Progress</div>
+                        <div class="stat-bar">
+                            <div class="stat-fill" id="progressBar"></div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-number" id="quizzesCompleted">0</div>
+                        <div class="stat-label">Quizzes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💡</div>
+                        <div class="stat-number" id="factsLearned">0</div>
+                        <div class="stat-label">Facts</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-number" id="achievementsEarned">0</div>
+                        <div class="stat-label">Achievements</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explore Section -->
+        <section id="explore" class="section">
+            <div class="section-header">
+                <h2 class="section-title"><span class="section-emoji">🔍</span>Explore Human Body</h2>
+                <p class="section-subtitle">Discover the amazing organs and systems that make up your body</p>
+            </div>
+            
+            <div class="explore-container">
+                <div class="system-selector">
+                    <h3>Body Systems</h3>
+                    <div class="system-btn active" data-system="all">🌟 All Systems</div>
+                    <div class="system-btn" data-system="nervous">🧠 Nervous System</div>
+                    <div class="system-btn" data-system="circulatory">🫀 Circulatory System</div>
+                    <div class="system-btn" data-system="respiratory">🫁 Respiratory System</div>
+                    <div class="system-btn" data-system="digestive">🫃 Digestive System</div>
+                    <div class="system-btn" data-system="sensory">👁️ Sensory Organs</div>
+                    <div class="system-btn" data-system="skeletal">🦴 Skeletal System</div>
+                </div>
+                
+                <div class="body-viewer">
+                    <div class="human-body">
+                        <!-- Head Section -->
+                        <div class="body-section head-section">
+                            <div class="organ" data-organ="brain" data-system="nervous">
+                                <span class="organ-emoji">🧠</span>
+                                <div class="organ-tooltip">Brain</div>
+                            </div>
+                            <div class="organ" data-organ="eyes" data-system="sensory">
+                                <span class="organ-emoji">👁️</span>
+                                <div class="organ-tooltip">Eyes</div>
+                            </div>
+                            <div class="organ" data-organ="ears" data-system="sensory">
+                                <span class="organ-emoji">👂🏻</span>
+                                <div class="organ-tooltip">Ears</div>
+                            </div>
+                            <div class="organ" data-organ="mouth" data-system="digestive">
+                                <span class="organ-emoji">👄</span>
+                                <div class="organ-tooltip">Mouth</div>
+                            </div>
+                            <div class="organ" data-organ="teeth" data-system="digestive">
+                                <span class="organ-emoji">🦷</span>
+                                <div class="organ-tooltip">Teeth</div>
+                            </div>
+                            <div class="organ" data-organ="tongue" data-system="sensory">
+                                <span class="organ-emoji">👅</span>
+                                <div class="organ-tooltip">Tongue</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Torso Section -->
+                        <div class="body-section torso-section">
+                            <div class="organ heart" data-organ="heart" data-system="circulatory">
+                                <span class="organ-emoji">🫀</span>
+                                <div class="organ-tooltip">Heart</div>
+                            </div>
+                            <div class="organ lungs" data-organ="lungs" data-system="respiratory">
+                                <span class="organ-emoji">🫁</span>
+                                <div class="organ-tooltip">Lungs</div>
+                            </div>
+                            <div class="organ" data-organ="liver" data-system="digestive">
+                                <span class="organ-emoji">🟤</span>
+                                <div class="organ-tooltip">Liver</div>
+                            </div>
+                            <div class="organ" data-organ="stomach" data-system="digestive">
+                                <span class="organ-emoji">🫃</span>
+                                <div class="organ-tooltip">Stomach</div>
+                            </div>
+                            <div class="organ" data-organ="kidneys" data-system="circulatory">
+                                <span class="organ-emoji">🫘</span>
+                                <div class="organ-tooltip">Kidneys</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Lower Section -->
+                        <div class="body-section lower-section">
+                            <div class="organ" data-organ="hands" data-system="skeletal">
+                                <span class="organ-emoji">🤲</span>
+                                <div class="organ-tooltip">Hands</div>
+                            </div>
+                            <div class="organ" data-organ="spine" data-system="skeletal">
+                                <span class="organ-emoji">🧿</span>
+                                <div class="organ-tooltip">Spine</div>
+                            </div>
+                            <div class="organ" data-organ="legs" data-system="skeletal">
+                                <span class="organ-emoji">🦵🏻</span>
+                                <div class="organ-tooltip">Legs</div>
+                            </div>
+                            <div class="organ" data-organ="bones" data-system="skeletal">
+                                <span class="organ-emoji">🦴</span>
+                                <div class="organ-tooltip">Bones</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="interaction-hint">
+                        <div class="hint-icon">👆</div>
+                        <p><strong>Click on any organ</strong> to learn detailed information, facts, and health tips!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anatomy Library Section -->
+        <section id="anatomy" class="section">
+            <div class="section-header">
+                <h2 class="section-title"><span class="section-emoji">📚</span>Anatomy Library</h2>
+                <p class="section-subtitle">Comprehensive information about all body parts and systems</p>
+            </div>
+            
+            <div class="anatomy-library">
+                <div class="anatomy-categories">
+                    <div class="category-btn active" data-category="all">🌟 All</div>
+                    <div class="category-btn" data-category="head">🧠 Head</div>
+                    <div class="category-btn" data-category="chest">🫀 Chest</div>
+                    <div class="category-btn" data-category="abdomen">🫃 Abdomen</div>
+                    <div class="category-btn" data-category="limbs">🦵🏻 Limbs</div>
+                </div>
+                
+                <div class="anatomy-grid" id="anatomyGrid">
+                    <!-- Content will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz" class="section">
+            <div class="quiz-container">
+                <!-- Quiz Selection -->
+                <div class="quiz-selection" id="quizSelection">
+                    <h2>🎯 Test Your Knowledge</h2>
+                    <div class="quiz-categories">
+                        <div class="quiz-card" data-category="nervous">
+                            <div class="quiz-card-header">
+                                <div class="quiz-icon">🧠</div>
+                                <div class="quiz-difficulty easy">Easy</div>
+                            </div>
+                            <h3>Nervous System Quiz</h3>
+                            <p>Test your knowledge about the brain, nerves, and nervous system functions.</p>
+                            <div class="quiz-stats">
+                                <span>📊 5 Questions</span>
+                                <span>⏱️ 30s each</span>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-card" data-category="circulatory">
+                            <div class="quiz-card-header">
+                                <div class="quiz-icon">🫀</div>
+                                <div class="quiz-difficulty medium">Medium</div>
+                            </div>
+                            <h3>Circulatory System Quiz</h3>
+                            <p>Learn about the heart, blood vessels, and circulation throughout the body.</p>
+                            <div class="quiz-stats">
+                                <span>📊 5 Questions</span>
+                                <span>⏱️ 30s each</span>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-card" data-category="sensory">
+                            <div class="quiz-card-header">
+                                <div class="quiz-icon">👁️</div>
+                                <div class="quiz-difficulty medium">Medium</div>
+                            </div>
+                            <h3>Sensory Organs Quiz</h3>
+                            <p>Explore how your eyes, ears, nose, tongue, and skin help you sense the world.</p>
+                            <div class="quiz-stats">
+                                <span>📊 5 Questions</span>
+                                <span>⏱️ 30s each</span>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-card" data-category="respiratory">
+                            <div class="quiz-card-header">
+                                <div class="quiz-icon">🫁</div>
+                                <div class="quiz-difficulty hard">Hard</div>
+                            </div>
+                            <h3>Respiratory System Quiz</h3>
+                            <p>Discover how your lungs and breathing system work to keep you alive.</p>
+                            <div class="quiz-stats">
+                                <span>📊 5 Questions</span>
+                                <span>⏱️ 30s each</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quiz Game -->
+                <div class="quiz-game hidden" id="quizGame">
+                    <div class="quiz-header">
+                        <div class="quiz-info">
+                            <h2 id="quizTitle">Quiz Title</h2>
+                            <div class="quiz-meta">
+                                <span id="questionCounter">1/5</span>
+                                <span id="quizTimer">30s</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="quizProgressBar"></div>
+                        </div>
+                        <div class="quiz-score">Score: <span id="currentScore">0</span></div>
+                    </div>
+                    
+                    <div class="question-container">
+                        <div class="question-card">
+                            <h3 id="questionText">Question will appear here</h3>
+                            <div class="answers-grid" id="answersGrid">
+                                <!-- Answer options will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-actions">
+                            <button class="quiz-btn secondary" id="skipQuestion">Skip Question</button>
+                            <button class="quiz-btn primary hidden" id="nextButton">Next Question</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quiz Results -->
+                <div class="quiz-results hidden" id="quizResults">
+                    <div class="results-header">
+                        <div class="results-icon" id="resultsIcon">🏆</div>
+                        <h2 class="results-title" id="resultsTitle">Quiz Complete!</h2>
+                        <p class="results-subtitle" id="resultsSubtitle">Great job on completing the quiz!</p>
+                    </div>
+                    
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <div class="score-inner">
+                                <div class="score-number" id="scorePercentage">80%</div>
+                                <div class="score-fraction"><span id="finalScore">4</span>/<span id="totalQuestions">5</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-stats">
+                        <div class="stat-item">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-value" id="correctAnswers">4</div>
+                            <div class="stat-label">Correct</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">❌</div>
+                            <div class="stat-value" id="incorrectAnswers">1</div>
+                            <div class="stat-label">Incorrect</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-icon">⏱️</div>
+                            <div class="stat-value" id="timeSpent">120s</div>
+                            <div class="stat-label">Time</div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-actions">
+                        <button class="quiz-btn secondary" id="backToQuizzes">Back to Quizzes</button>
+                        <button class="quiz-btn primary" id="restartQuiz">Try Again</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Facts Section -->
+        <section id="facts" class="section">
+            <div class="section-header">
+                <h2 class="section-title"><span class="section-emoji">💡</span>Amazing Body Facts</h2>
+                <p class="section-subtitle">Discover incredible facts about the human body that will amaze you</p>
+            </div>
+            
+            <div class="facts-container">
+                <div class="facts-grid" id="factsGrid">
+                    <!-- Facts will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="about-container">
+                <div class="section-header">
+                    <h2 class="section-title"><span class="section-emoji">ℹ️</span>About Human Body Explorer</h2>
+                </div>
+                
+                <div class="about-content">
+                    <p>Human Body Explorer is an interactive educational platform designed to help you learn about the amazing human body in a fun and engaging way. Explore organs, take quizzes, and discover fascinating facts about how your body works!</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🔍</div>
+                            <h4>Interactive Exploration</h4>
+                            <p>Click on body parts to learn detailed information about their functions and importance.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🧬</div>
+                            <h4>3D Body Model</h4>
+                            <p>Explore the human body from different angles with our interactive 3D-like model.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">🎯</div>
+                            <h4>Educational Quizzes</h4>
+                            <p>Test your knowledge with fun quizzes covering different body systems.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">💡</div>
+                            <h4>Amazing Facts</h4>
+                            <p>Discover incredible facts about the human body that will surprise and educate you.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">📚</div>
+                            <h4>Comprehensive Library</h4>
+                            <p>Access detailed information about all major organs and body systems.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">📊</div>
+                            <h4>Progress Tracking</h4>
+                            <p>Track your learning progress and earn achievements as you explore.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Organ Modal with Tabs -->
+    <div class="modal hidden" id="organModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="close-btn" id="closeModal">&times;</button>
+            
+            <div class="modal-header">
+                <div class="organ-icon" id="modalOrganIcon">🫀</div>
+                <h2 id="modalOrganName">Heart</h2>
+                <p>Learn about this amazing organ</p>
+            </div>
+            
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="overview">📖 Overview</button>
+                <button class="tab-btn" data-tab="facts">✨ Facts</button>
+                <button class="tab-btn" data-tab="nutrition">🥗 Nutrition</button>
+                <button class="tab-btn" data-tab="health">💚 Health</button>
+            </div>
+            
+            <div class="tab-content">
+                <div class="tab-panel active" id="overview-panel">
+                    <div class="organ-brief">
+                        <h4>📝 Brief Explanation</h4>
+                        <p id="modalOrganBrief">Brief explanation will appear here</p>
+                    </div>
+                    
+                    <div class="organ-detailed">
+                        <h4>📖 Detailed Information</h4>
+                        <p id="modalOrganDescription">Detailed description will appear here</p>
+                    </div>
+                    
+                    <div class="organ-functions">
+                        <h4>⚡ Key Functions</h4>
+                        <ul id="organFunctionsList">
+                            <!-- Functions will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tab-panel" id="facts-panel">
+                    <div class="organ-facts">
+                        <h4>✨ Amazing Facts</h4>
+                        <ul id="organFactsList">
+                            <!-- Facts will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tab-panel" id="nutrition-panel">
+                    <div class="organ-nutrition">
+                        <h4>🥗 Nutrition & Diet</h4>
+                        <ul id="organNutritionList">
+                            <!-- Nutrition info will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="tab-panel" id="health-panel">
+                    <div class="organ-disorders">
+                        <h4>⚠️ Common Issues</h4>
+                        <ul id="organDisordersList">
+                            <!-- Disorders will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    
+                    <div class="organ-care">
+                        <h4>💚 Health Tips</h4>
+                        <ul id="organCareList">
+                            <!-- Care tips will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
